@@ -1,8 +1,8 @@
-# app.py - Fatima's Version
+# app.py - Combined Fatima & Alice's Features
 import os
 import joblib
 import numpy as np
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 
 APP_ROOT = os.path.dirname(__file__)
 MODEL_DIR = os.path.join(APP_ROOT, "models")
@@ -16,7 +16,7 @@ feature_field_map = joblib.load(os.path.join(MODEL_DIR, "feature_field_map.pkl")
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-# Fatima's authentication routes
+# Combined routes from both Fatima and Alice
 @app.route('/login')
 def login():
     return "Login Page - Added by Fatima"
@@ -25,14 +25,22 @@ def login():
 def register():
     return "User Registration - Fatima's Feature"
 
+@app.route('/dashboard')
+def dashboard():
+    return "Analytics Dashboard - Added by Alice"
+
+@app.route('/stats')
+def statistics():
+    return "Price Statistics - Alice's Feature"
+
 @app.route('/')
 def home():
-    return "Home Page with Authentication - Fatima's Version"
+    return "Home Page with Authentication and Dashboard Features"
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    # Original prediction logic would go here
-    return "Prediction page - Fatima's version"
+    # Keep Fatima's function name but combine logic if needed
+    return "Prediction page - Combined version"
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5000)  # Use Fatima's port
