@@ -1,4 +1,4 @@
-# app.py - Combined Fatima & Alice's Features
+# app.py - Combined Fatima, Alice & Bob's Features
 import os
 import joblib
 import numpy as np
@@ -16,7 +16,7 @@ feature_field_map = joblib.load(os.path.join(MODEL_DIR, "feature_field_map.pkl")
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-# Combined routes from both Fatima and Alice
+# Combined routes from all three team members
 @app.route('/login')
 def login():
     return "Login Page - Added by Fatima"
@@ -33,14 +33,22 @@ def dashboard():
 def statistics():
     return "Price Statistics - Alice's Feature"
 
+@app.route('/api/predict')
+def api_predict():
+    return "API Predict - Added by Bob"
+
+@app.route('/api/docs')
+def api_documentation():
+    return "API Documentation - Bob's Feature"
+
 @app.route('/')
 def home():
-    return "Home Page with Authentication and Dashboard Features"
+    return "Home Page with Authentication, Dashboard and API Features"
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    # Keep Fatima's function name but combine logic if needed
-    return "Prediction page - Combined version"
+    # Use the original function name
+    return "Prediction page - Final combined version"
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)  # Use Fatima's port
+    app.run(debug=True, port=5000)  # Use original port
