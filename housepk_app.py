@@ -2,10 +2,10 @@
 from flask import Flask
 
 app = Flask(__name__)
-
 @app.route('/')
 def home():
-    return "Home Page for alice"
+    return "🚨 Alice's Home Page - CONFLICT VERSION"
+
 @app.route('/about')
 def about():
     return "About Page for alice"
